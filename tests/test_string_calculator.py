@@ -18,7 +18,13 @@ class TestStringCalculator(unittest.TestCase):
             add("1,\n")
             self.assertEqual(str(ctx.exception), "invalid input")
 
+        #for custom delimeter
         self.assertEqual(add("//|\n4|5|6"), 15)
+
+        #for negative numbers
+        with self.assertRaises(ValueError) as ctx:
+            add("1,-2,3")
+        self.assertEqual(str(ctx.exception), "negatives not allowed: -2")
 
        
 

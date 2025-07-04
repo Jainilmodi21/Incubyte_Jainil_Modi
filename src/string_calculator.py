@@ -14,6 +14,23 @@ def add(numbers: str) -> int:
 
     parts = numbers.split(delim)
 
+    
+    negatives = []
+    for part in parts:
+        if not part:
+            continue
+
+        number = int(part)
+
+        # if it’s negative, store it
+        if number < 0:
+            negatives.append(number)
+
+    if negatives:
+        # list all negatives in the message
+        negative_str = ", ".join(str(n) for n in negatives)
+        raise ValueError(f"negatives not allowed: {negative_str}")
+
     if any(part == "" for part in parts):
         raise ValueError("invalid input")
     # convert to ints and sum
