@@ -18,6 +18,8 @@ class TestStringCalculator(unittest.TestCase):
             add("1,\n")
             self.assertEqual(str(ctx.exception), "invalid input")
 
+        self.assertEqual(add("//|\n4|5|6"), 15)
+
        
 
 if __name__ == '__main__':
