@@ -1,4 +1,4 @@
 def add(numbers: str) -> int:
-    if numbers == "":
+    if numbers== "":
         return 0
     
