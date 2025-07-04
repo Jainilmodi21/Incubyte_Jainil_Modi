@@ -39,7 +39,10 @@ class TestStringCalculator(unittest.TestCase):
         #for custom delimiter of any length
         self.assertEqual(calc.add("//[***]\n1***2***3"), 6)
 
-        
+        # Allow multiple delimiters 
+        self.assertEqual(calc.add("//[*][%]\n1*2%3"), 6)
+
+
 
        
 
