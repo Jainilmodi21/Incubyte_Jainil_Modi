@@ -42,9 +42,8 @@ class TestStringCalculator(unittest.TestCase):
         # Allow multiple delimiters 
         self.assertEqual(calc.add("//[*][%]\n1*2%3"), 6)
 
-
-
-       
+        # multiple delimiters with length longer than one char 
+        self.assertEqual(calc.add("//[**][%%]\n1**2%%3"), 6)
 
 if __name__ == '__main__':
     unittest.main()
