@@ -1,1 +1,4 @@
 1) cannot import add method (add method is not implemented)
+2) test for 1 and 2 numbers
+3) test \n delimeter
+4) test for invalid input

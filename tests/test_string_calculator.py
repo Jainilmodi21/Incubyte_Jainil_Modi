@@ -10,5 +10,15 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("1"), 1)
         self.assertEqual(add("1,2"), 3)
 
+        #test for \n delimeter
+        self.assertEqual(add("1\n2,3"), 6)
+
+        #for invalid input
+        with self.assertRaises(ValueError) as ctx:
+            add("1,\n")
+            self.assertEqual(str(ctx.exception), "invalid input")
+
+       
+
 if __name__ == '__main__':
     unittest.main()
