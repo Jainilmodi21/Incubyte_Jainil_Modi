@@ -9,20 +9,24 @@ class StringCalculator:
         if numbers== "":
             return 0
         
-        delim = ","
-        # check for custom delimiter syntax 
-        if numbers.startswith("//"):
-            # split into header and the rest
+        delimiter = ","
+        # custom delimiter of any length in format //[...]\n
+        if numbers.startswith("//[") and "]\n" in numbers:
             header, numbers = numbers.split("\n", 1)
-            delim = header[2:]      
+            delimiter = header[3:-1]  
+        elif numbers.startswith("//"):
+            # single-char delimiter 
+            header, numbers = numbers.split("\n", 1)
+            delimiter = header[2:]      
 
         # normalize newlines to the chosen delimiter
-        numbers = numbers.replace("\n", delim)
+        numbers = numbers.replace("\n", delimiter)
 
-        parts = numbers.split(delim)
+        parts = numbers.split(delimiter)
 
         
         negatives = []
+        valid_numbers = [] 
         for part in parts:
             if not part:
                 continue
@@ -32,6 +36,9 @@ class StringCalculator:
             # if it’s negative, store it
             if number < 0:
                 negatives.append(number)
+            elif number <= 1000:  
+                valid_numbers.append(number)
+
 
         if negatives:
             # list all negatives in the message
@@ -41,7 +48,7 @@ class StringCalculator:
         if any(part == "" for part in parts):
             raise ValueError("invalid input")
         # convert to ints and sum
-        return sum(int(n) for n in parts)
+        return sum(valid_numbers)
         
 
     def get_called_count(self) -> int:

@@ -32,6 +32,14 @@ class TestStringCalculator(unittest.TestCase):
         #count the number of add calls
         self.assertEqual(calc.get_called_count(), 7)
 
+        #for number bigger than 1000
+        self.assertEqual(calc.add("2,1001"), 2)
+        self.assertEqual(calc.add("1000,1001,5"), 1005)
+
+        #for custom delimiter of any length
+        self.assertEqual(calc.add("//[***]\n1***2***3"), 6)
+
+        
 
        
 
