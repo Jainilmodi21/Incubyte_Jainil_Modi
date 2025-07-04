@@ -2,10 +2,17 @@ def add(numbers: str) -> int:
     if numbers== "":
         return 0
     
-    #replace \n to "," for delimeter
-    numbers = numbers.replace("\n", ",")
-    #split string in numbers using "," delimeter
-    parts = numbers.split(",")
+    delim = ","
+    # check for custom delimiter syntax 
+    if numbers.startswith("//"):
+        # split into header and the rest
+        header, numbers = numbers.split("\n", 1)
+        delim = header[2:]      
+
+    # normalize newlines to the chosen delimiter
+    numbers = numbers.replace("\n", delim)
+
+    parts = numbers.split(delim)
 
     if any(part == "" for part in parts):
         raise ValueError("invalid input")
