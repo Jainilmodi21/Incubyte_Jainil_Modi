@@ -47,8 +47,12 @@ class StringCalculator:
         for part in parts:
             if not part:
                 continue
-
-            number = int(part)
+            
+            #check string contains character that are not number
+            try:
+                 number = int(part)
+            except ValueError:
+                raise ValueError("Invalid input")
 
             # if it’s negative, store it
             if number < 0:
