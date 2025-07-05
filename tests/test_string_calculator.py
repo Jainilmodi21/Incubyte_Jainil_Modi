@@ -45,5 +45,7 @@ class TestStringCalculator(unittest.TestCase):
         # multiple delimiters with length longer than one char 
         self.assertEqual(calc.add("//[**][%%]\n1**2%%3"), 6)
 
+        self.assertEqual(calc.add("2,5,t"), "Invalid input")
+
 if __name__ == '__main__':
     unittest.main()
