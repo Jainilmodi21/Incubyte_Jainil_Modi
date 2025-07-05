@@ -56,7 +56,12 @@ class TestStringCalculator(unittest.TestCase):
             self.assertEqual(str(ctx.exception), "invalid input")
 
         #use "[]" as custom delimiter
-        self.assertEqual(calc.add("//[[]]\n1[]2[]3"), 6)
+        with self.assertRaises(ValueError) as ctx:
+            calc.add("//[[]]\n1[]2[]3")
+            self.assertEqual(str(ctx.exception), "Empty delimiter or `[]` delimiter is not allowed")
+        
+        # test for very large number
+        self.assertEqual(calc.add("12345678910"), 0)
 
 if __name__ == '__main__':
     unittest.main()

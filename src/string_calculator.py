@@ -29,7 +29,7 @@ class StringCalculator:
                     elif char == "]":
                         inside_brackets = False
                         if temp == "":
-                            temp+="[]"
+                            raise ValueError("Empty delimiter or `[]` delimiter is not allowed")
                         delimiters.append(temp)
                     elif inside_brackets:
                         temp += char
