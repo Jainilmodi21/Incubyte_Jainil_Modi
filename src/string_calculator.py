@@ -21,15 +21,17 @@ class StringCalculator:
                 # Extract multiple delimiters of any length
                 delimiters = []
                 temp = ""
-                inside_bracket = False
+                inside_brackets = False
                 for char in delimiter_section:
                     if char == "[":
-                        inside_bracket = True
+                        inside_brackets = True
                         temp = ""
                     elif char == "]":
-                        inside_bracket = False
+                        inside_brackets = False
+                        if temp == "":
+                            temp+="[]"
                         delimiters.append(temp)
-                    elif inside_bracket:
+                    elif inside_brackets:
                         temp += char
             else:
                 # Single character delimiter
@@ -47,9 +49,13 @@ class StringCalculator:
         for part in parts:
             if not part:
                 continue
-            
+
             #check string contains character that are not number
             try:
+                 # check for floating point
+                 if not part.isdigit() and not (part.startswith('-') and part[1:].isdigit()):
+                        raise ValueError("Invalid input")
+                    
                  number = int(part)
             except ValueError:
                 raise ValueError("Invalid input")

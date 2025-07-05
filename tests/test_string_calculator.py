@@ -45,9 +45,18 @@ class TestStringCalculator(unittest.TestCase):
         # multiple delimiters with length longer than one char 
         self.assertEqual(calc.add("//[**][%%]\n1**2%%3"), 6)
 
+        #string contains other characters that are not numbers
         with self.assertRaises(ValueError) as ctx:
             calc.add("2,3,t")
             self.assertEqual(str(ctx.exception), "invalid input")
+
+        #string contains floating numbers
+        with self.assertRaises(ValueError) as ctx:
+            calc.add("2,5.2")
+            self.assertEqual(str(ctx.exception), "invalid input")
+
+        #use "[]" as custom delimiter
+        self.assertEqual(calc.add("//[[]]\n1[]2[]3"), 6)
 
 if __name__ == '__main__':
     unittest.main()
