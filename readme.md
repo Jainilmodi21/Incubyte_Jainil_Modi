@@ -46,7 +46,7 @@ Each feature was developed using the **Red-Green-Refactor** TDD cycle:
 - Input: `"2,5.5"` → Raises: `ValueError("Invalid input")`
 
 ### 14.  Using "[]" as Delimiter
-- Input: `"//[[]]\n1[]2[]3"` → Output: `6`
+- Input: `"//[]\n1[]2[]3"` → Output: `Empty delimiter or `[]` delimiter is not allowed`
 
 ### 15.  Very Large Numbers
 - Input: `"1234567891011"` → Output: `0` (Ignored due to >1000 rule)
