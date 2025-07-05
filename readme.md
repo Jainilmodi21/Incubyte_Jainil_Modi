@@ -45,7 +45,7 @@ Each feature was developed using the **Red-Green-Refactor** TDD cycle:
 ### 13.  Floating Point Numbers
 - Input: `"2,5.5"` → Raises: `ValueError("Invalid input")`
 
-### 14.  Using "[]" as Delimiter
+### 14.  Using "[]" as Delimiter or empty delimiter
 - Input: `"//[]\n1[]2[]3"` → Output: `Empty delimiter or `[]` delimiter is not allowed`
 
 ### 15.  Very Large Numbers

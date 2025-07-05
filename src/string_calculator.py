@@ -1,5 +1,4 @@
 
-import re
 class StringCalculator:
     def __init__(self):
         self._call_count = 0
